@@ -1,0 +1,14 @@
+body{
+    background: #605eeb;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #3242cf, #c73664);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #57ee43, #f7ea3f); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+};
+    
+
+    
+#footer {
+            font-family: sans-serif;
+            width: 100%;
+            bottom: 0;
+            position:fixed;
+}

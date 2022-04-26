@@ -1,0 +1,19 @@
+{{#if success_msg}}
+<div class="card-body mt-4" role="alert">
+  <strong>{{success_msg}}</strong>
+</div>
+{{/if}}
+
+{{#if error_msg}}
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>{{error_msg}}</strong>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{{/if}}
+
+{{#each error}}
+<div class="alert alert-danger alert-dismissible fade show mt-4" role="alert">
+  <strong>{{text}}</strong>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{{/each}}
