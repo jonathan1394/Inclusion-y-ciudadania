@@ -61,3 +61,10 @@ app.use(express.static(path.join(__dirname,'public')));
 app.listen(app.get('port'), () => {
     console.log('Servidor escuchando en el puerto', app.get('port'));
 });
+
+//Educado.
+var eclass = require('./Educados'); // requiero la instancia
+var e=new eclass(1,"Jonathan"); //la instancio, Hago el New
+//app.use('Educados',require('./Educados'));
+//var e= new app.get('Educados');
+console.log(e);
