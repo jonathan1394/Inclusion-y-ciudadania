@@ -7,6 +7,8 @@ const expressSesion= require('express-session');
 const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access');
 const flash= require('connect-flash');
 //const { join } = require('path');
+const eclass = require('./Educados'); // requiero la instancia
+const Educados = require('./Educados');
 
 const app = express();
 
@@ -42,6 +44,7 @@ app.use(flash());
 app.use((req, res, next)=>{
     res.locals.succes_msg=req.flash('success_msg');
     res.locals.error_msg=req.flash('error_msg');
+    res.locals.list=req.flash('list');
     next();
 });
 
@@ -56,15 +59,9 @@ app.use(require('./routes/login'));
 app.use(express.static(path.join(__dirname,'public')));
 
 
-
+Educados.prueba;
 // init server
 app.listen(app.get('port'), () => {
     console.log('Servidor escuchando en el puerto', app.get('port'));
 });
 
-//Educado.
-var eclass = require('./Educados'); // requiero la instancia
-var e=new eclass(1,"Jonathan"); //la instancio, Hago el New
-//app.use('Educados',require('./Educados'));
-//var e= new app.get('Educados');
-console.log(e);

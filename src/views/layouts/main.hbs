@@ -21,19 +21,13 @@
 </head>
 <body>
     {{>Navegate}}
-    <div class="container mt-1">
         <main class="container">
-            <div class="container mt-1">
-                {{>messages}}
-            </div>
-            <div class="container mt-1">
-                {{{body}}}    
-            </div>        
+            {{>messages}}
+            {{{body}}}    
         </main>
-    </div>
-        <foother>
-            <div class="container md-9"></div>
-                {{>Foother}}
-            </div>
-        </foother>
+    <foother>
+        <div class="container md-9"></div>
+            {{>Foother}}
+        </div>
+    </foother>
 </body>

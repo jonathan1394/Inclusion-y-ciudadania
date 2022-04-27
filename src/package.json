@@ -4,7 +4,7 @@
   "description": "Prueba de proyecto de inclucion y ciudadania ",
   "main": "index.js",
   "scripts": {
-    "dev": "node index.js"
+    "dev": "nodemon index.js"
   },
   "author": "",
   "license": "ISC",
@@ -16,7 +16,8 @@
     "express-session": "^1.17.2",
     "express3-handlebars": "^0.5.2",
     "ha": "^0.0.17",
-    "method-override": "^3.0.0"
+    "method-override": "^3.0.0",
+    "nodemon": "^2.0.15"
   },
   "devDependencies": {
     "handlebars": "^4.5.0"

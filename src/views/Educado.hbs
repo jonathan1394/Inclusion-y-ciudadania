@@ -1,7 +1,12 @@
-<div class="container mt-3">
+<div class="container mt-4">
     <h3>Educados</h3>
-    <div class="row mt-3">
-        odsjaod
+    <div class="row">
+        {{#each list}} 
+        <div class="col-3">
+            <p>{{Nombre}}</p>
+            <p>{{Id}}</p>
+        </div>
+        {{/each}}
     </div>
         <hr class="my-4">
 <h3>Casas</h3>
