@@ -1,3 +1,6 @@
+const db=require('./Database');
+
+
 function Educados(pId,pNombre){
     this.Id=pId;
     this.Nombre=pNombre;
