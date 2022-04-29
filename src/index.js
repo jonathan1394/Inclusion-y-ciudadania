@@ -13,7 +13,7 @@ const app = express();
 
 
 
-app.set('port', process.env.PORT || 4000);
+app.set('port', process.env.PORT || 6060);
 app.set('views', path.join(__dirname, 'views'));
 
 app.engine('hbs', Exphbs.engine({
@@ -36,18 +36,15 @@ app.use(expressSesion({
     resave: true,
     saveUninitialized: true,
 }));
-app.use(express.json);
+app.use(express.json());
 
 
 app.use(flash());
-
-//console.log(error);
 
 //Global Variables
 app.use((req, res, next)=>{
     res.locals.succes_msg=req.flash('success_msg');
     res.locals.error_msg=req.flash('error_msg');
-    res.locals.list=req.flash('list');
     next();
 });
 
@@ -58,14 +55,12 @@ app.use(require('./routes/Casa'));
 app.use(require('./routes/Educado'));
 app.use(require('./routes/login'));
 
-
-
 //Statick Files
 app.use(express.static(path.join(__dirname,'public')));
 
-
-
 // init server
 app.listen(app.get('port'), () => {
-    console.log('Servidor escuchando en el puerto', app.get('port'));
+    console.log('Servidor escuchando en el puerto: ', app.get('port'));
 });
+
+//console.log("erro");

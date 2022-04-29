@@ -3,8 +3,8 @@ const rutas = express.Router();
 const Educado = require('../Educados');
 
 
-rutas.get('/home',(req, res) => {
-    res.render('home');
+rutas.get('/list',(req, res) => {
+    res.render('./Educados/list');
 });
 
 module.exports = rutas;
