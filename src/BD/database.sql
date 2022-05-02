@@ -1,9 +1,20 @@
 create database IyC_database;
 
-use IyC_database;
+use IyC_database
 
-create table users(
-    id INI(11) no null PRIMARY KEY ,
-    username varchar(16) not null,
-    password varchar(40) not null,
+create table Educados(
+    id int not null AUTO_INCREMENT PRIMARY KEY, 
+    nombre varchar(40) not null,
+    CI varchar(10), 
+    sipi varchar(10), 
+    fnac date, 
+    prorroga varchar(100), 
+    pei varchar(100), 
+    rutafoto varchar(160) 
 );
+
+select * from Educados;
+
+INSERT into Educados values (1,"Jonathan Machad","49622524","12334","1333-12-12","FKDAJFÑLKAJDFLKJ","DKFJSKJFÑLDLÑKDFJÑKLA","");                                                    
+
+SELECT COUNT(id) FROM Educados;

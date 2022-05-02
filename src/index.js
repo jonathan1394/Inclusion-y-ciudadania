@@ -13,7 +13,7 @@ const app = express();
 
 
 
-app.set('port', process.env.PORT || 6060);
+app.set('port', process.env.PORT || 4000);
 app.set('views', path.join(__dirname, 'views'));
 
 app.engine('hbs', Exphbs.engine({
@@ -59,6 +59,7 @@ app.use(require('./routes/login'));
 app.use(express.static(path.join(__dirname,'public')));
 
 // init server
+app.set('address','localhost');
 app.listen(app.get('port'), () => {
     console.log('Servidor escuchando en el puerto: ', app.get('port'));
 });
