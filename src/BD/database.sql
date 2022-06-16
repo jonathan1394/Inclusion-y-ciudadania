@@ -10,7 +10,8 @@ create table Educados(
     fnac date, 
     prorroga varchar(100), 
     pei varchar(100), 
-    rutafoto varchar(160) 
+    rutafoto varchar(160),
+
 );
 
 select * from Educados;

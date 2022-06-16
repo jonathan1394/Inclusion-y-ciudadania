@@ -1,0 +1,33 @@
+
+<div class="card mt-4 col-12">
+  <div class="card-body mx-auto col-10">
+    <h3 class="card-title text-center">Ingreso</h5>
+    
+<form action="/casa/edit/{{consulta.id}}" method="POST">
+       <div class="form-group">
+            <label>Nombre: </label>
+            <input name="nombre" autofocus type="text" class="form-control" value="{{consulta.nombre}}" > </br>
+       </div>   
+
+       <div class="form-group">
+            <label>Direccion</label>
+            <input name="direccion" type="text" class="form-control" value="{{consulta.direccion}}"> </br>
+       </div>   
+        <div class="form-group">
+            <label>Telefono:</label>
+            <input name="telefono" type="text" class="form-control " value="{{consulta.telefono}}"> </br>
+       </div>   
+
+    <div class="form-group">
+            <label for="exampleFormControlFile1">Foto:</label>
+            <input type="file" class="form-control-file" id="exampleFormControlFile1" name="foto">
+    </div>
+
+    <div class="form-group">
+         <br>
+        <button  class="btn btn-success">Completar Formulario</button>
+    </div>
+
+</form>
+        </div>
+  </div>

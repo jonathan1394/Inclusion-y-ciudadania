@@ -3,33 +3,26 @@
   <div class="card-body mx-auto col-10">
     <h3 class="card-title text-center">Ingreso</h5>
     
-<form action="/educado/edit/{{editar.id}}" method="POST">
+<form action="/educado/edit/{{editar.Id}}" method="POST">
        <div class="form-group">
             <label>Nombre: </label>
-            <input name="Nombre" type="text" class="form-control" value='{{editar.nombre}}'> </br>
+            <input name="Nombre" type="text" class="form-control" value='{{editar.Nombre}}'> </br>
        </div>   
 
        <div class="form-group">
             <label>Cedula de identidad: </label>
-            <input name="Ci" type="text" class="form-control" value={{editar.CI}}> </br>
+            <input name="Ci" type="text" class="form-control" value={{editar.Ci}}> </br>
        </div>   
         <div class="form-group">
             <label>Sipi:</label>
-            <input name="Sipi" type="text" class="form-control" value={{editar.sipi}}> </br>
+            <input name="Sipi" type="text" class="form-control" value={{editar.Sipi}}> </br>
        </div>   
         <div class="form-group">
             <label>Fecha de nacimiento: </label>
-            <input name="Fnac" type="date" class="form-control" value="{{editar.fnac}}"> </br>
+            <input name="Fnac" type="date" class="form-control" value="{{editar.Fnac}}"> </br>
        </div>   
-        <div class="form-group">
-            <label>Proroga: </label>
-            <input name="prorroga" type="text" class="form-control" value="{{editar.prorroga}}"> </br>
-       </div>
-     <div class="mb-3">
-          <label for="validationTextarea">Proyecto Educativo Individual: </label>
-          <textarea class="form-control"  name="pei" > {{editar.pei}}</textarea>
-     <br>
-     </div>
+
+
 
     <div class="form-group">
             <label for="exampleFormControlFile1">Foto:</label>

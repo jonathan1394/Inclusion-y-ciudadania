@@ -1,0 +1,25 @@
+<div class="d-flex mt-4" >
+<div class="card" style="width: 15rem;">
+  <img class="card-img-top" width="150" height="150" src="./../../public/imagenes/casa-1.jpg" alt="casa">
+  <div class="card-body">
+    <h5 class="card-title">Ingreso</h5>
+    <p class="card-text">Nuevo ingreso al proyecto </p></br>
+    <a href="/casa/add" class="btn btn-success">Completar Formulario</a>
+  </div>
+</div>
+
+{{#each consulta}}
+<div class="card mx-2" style="width: 15rem;">
+  <img class="card-img-top" src="./../../public/imagenes/casa-1.jpg"  width="150" height="150" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{nombre}}</h5>
+    <p class="card-text">{{direccion}}</p>
+    <p class="card-text">{{telefono}}</p>   
+    <div class="row">
+<a href="/casa/edit/{{id}}" class="btn btn-primary ">Editar</a><br>
+<a href="/casa/delete/{{id}}" class="btn btn-danger ">Eliminar</a>
+ </div>
+  </div>
+</div>
+{{/each}}
+</div>
