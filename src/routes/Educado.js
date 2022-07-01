@@ -9,7 +9,7 @@ rutas.get('/educado/list',async(req, res) => {
     res.render('educados/list',{consulta});
 });
 
-rutas.get('/educado/add',async(req, res) => { 
+rutas.get('/educado/add',(req, res) => { 
     res.render('educados/add');
 });
 
@@ -67,12 +67,27 @@ rutas.post('/educado/edit/:id',async(req, res) => {
 
 rutas.get('/educado/delete/:id', async(req, res) =>{
     var id= req.params.id;
-    
     pool.query('update Educado set VALIDO=0 where id= ?',id);
     let consulta=await pool.query('select * from Educado where valido=1');
     res.render('educados/list',{consulta});
 });
 
+rutas.get('/educado/menu/:id',async(req, res) => {
+    let id=req.params;
+    console.log(id);
+    res.render('educados/menu',id);
+});
 
+rutas.get('/educado/pei/:id',async(req, res) => {
+    let id=req.params;
+    console.log(id);
+    res.render('educados/PEI',id);
+});
+
+rutas.get('/educado/ei/:id',async(req, res) => {
+    let id=req.params;
+    console.log(id);
+    res.render('educados/EI',id);
+});
 
 module.exports = rutas;
