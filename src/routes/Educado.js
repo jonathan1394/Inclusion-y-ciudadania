@@ -90,4 +90,19 @@ rutas.get('/educado/ei/:id',async(req, res) => {
     res.render('educados/EI',id);
 });
 
+rutas.post('/educado/PEI',async(req, res) => {
+    let id=req.params;
+    console.log(id);
+    let consulta=await pool.query('select * from Educado where valido=1');
+    res.render('educados/list',{consulta});
+});
+
+rutas.post('/educado/ei',async(req, res) => {
+    let id=req.params;
+    console.log(id);
+    let consulta=await pool.query('select * from Educado where valido=1');
+    res.render('educados/list',{consulta});
+});
+
+
 module.exports = rutas;
