@@ -4,9 +4,9 @@
     <h3 class="card-title text-center">Ingreso</h5>
     
 <form action="/educado/edit/{{editar.Id}}" method="POST">
-       <div class="form-group">
+<div class="form-group">
             <label>Nombre: </label>
-            <input name="Nombre" type="text" class="form-control" value='{{editar.Nombre}}'> </br>
+            <input name="Nombre" autofocus type="text" class="form-control" value={{editar.Nombre}}> </br>
        </div>   
 
        <div class="form-group">
@@ -19,21 +19,33 @@
        </div>   
         <div class="form-group">
             <label>Fecha de nacimiento: </label>
-            <input name="Fnac" type="date" class="form-control" value="{{editar.Fnac}}"> </br>
+            <input name="Fnac" type="date" class="form-control" value={{editar.Fnac}}> </br>
        </div>   
-
-
+        <div class="form-group">
+            <label>Proroga: </label>
+            <input name="porroga" type="text" class="form-control" value={{editar.Prorroga}}> </br>
+       </div>
+     <div class="form-group">
+            <label>Casa: </label>
+            <select name="Casa" class="form-control">
+               {{#each Casas}}
+                         <option value={{Id}}>{{Nombre}}
+                         </option>
+               {{/each}}
+               <option value={{S.Id}} selected>{{S.Nombre}}
+               </option>
+            </select> </br>
+       </div>
 
     <div class="form-group">
-            <label for="exampleFormControlFile1">Foto:</label>
+            <label>Foto:</label>
             <input type="file" class="form-control-file" id="exampleFormControlFile1" name="Archivo">
     </div>
 
     <div class="form-group">
          <br>
-        <button  class="btn btn-success">Completar Formulario</button>
+        <button  class="btn btn-success mt-4">Completar Formulario</button>
     </div>
-
 </form>
         </div>
   </div>

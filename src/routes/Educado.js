@@ -9,13 +9,15 @@ rutas.get('/educado/list',async(req, res) => {
     res.render('educados/list',{consulta});
 });
 
-rutas.get('/educado/add',(req, res) => { 
-    res.render('educados/add');
+rutas.get('/educado/add',async(req, res) => { 
+    var Casas = await pool.query('select * from casa where Valido=1');
+    res.render('educados/add', {Casas});
 });
 
 rutas.post('/educado/add',async (req, res) => {
     const Chico=req.body;
     var id = await pool.query('SELECT COUNT(id) as cantidad FROM Educado;');
+
     id=JSON.parse(JSON.stringify(id[0]));
     const aux={
         id:((id.cantidad)+1),
@@ -24,11 +26,10 @@ rutas.post('/educado/add',async (req, res) => {
         sipi: Chico.Sipi,
         fnac: Chico.Fnac,   
         prorroga: Chico.prorroga,
-        pei: Chico.pei,
+        casa: Chico.Casa,
         rutafoto: Chico.Archivo,
         valido:1,
     };
-    console.log(aux);
     if(aux.nombre!='' && aux.CI!='') await pool.query('insert into Educado set ?',aux);
 
     let consulta=await pool.query('select * from Educado WHERE VALIDO=1');
@@ -38,9 +39,11 @@ rutas.post('/educado/add',async (req, res) => {
 rutas.get('/educado/edit/:id',async(req, res) => {
     let id=req.params;
     const editar= await pool.query('select * From Educado where ?',id);
+    var Casas =await pool.query('select * from casa where Valido=1 and Id <> ?',editar[0].Casa);
+    var Seleccionada = await pool.query('select * from casa where Valido=1 and Id = ?', editar[0].Casa);
+    if(editar[0].Fnac!='')
     editar[0].Fnac=editar[0].Fnac.getFullYear() + "-"+ ("0" +(editar[0].Fnac.getMonth()+1)).slice(0-2) +"-" + ("0"+editar[0].Fnac.getDate()).slice(0-2);
-    res.render('educados/edit',{editar :editar[0]});
-        console.log(editar[0]);
+    res.render('educados/edit',{editar :editar[0],Casas,S:Seleccionada[0]});
 });
 
 rutas.post('/educado/edit/:id',async(req, res) => { 
@@ -81,7 +84,7 @@ rutas.get('/educado/menu/:id',async(req, res) => {
 rutas.get('/educado/pei/:id',async(req, res) => {
     let id=req.params;
     console.log(id);
-    res.render('educados/PEI',id);
+    res.render('educados/PEI/Add-PEI',id);
 });
 
 rutas.get('/educado/ei/:id',async(req, res) => {
@@ -89,5 +92,22 @@ rutas.get('/educado/ei/:id',async(req, res) => {
     console.log(id);
     res.render('educados/EI',id);
 });
+
+rutas.post('/educado/PEI',async(req, res) => {
+    let id=req.params;
+    console.log(id);
+    let consulta=await pool.query('select * from Educado where valido=1');
+    res.render('educados/list',{consulta});
+});
+
+rutas.post('/educado/ei',async(req, res) => {
+    let id=req.params;
+    console.log(id);
+    let consulta=await pool.query('select * from Educado where valido=1');
+    res.render('educados/list',{consulta});
+});
+
+
+
 
 module.exports = rutas;

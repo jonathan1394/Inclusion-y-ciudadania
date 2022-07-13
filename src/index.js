@@ -53,6 +53,7 @@ app.use((req, res, next)=>{
 app.use(require('./routes/index'));
 app.use(require('./routes/Casa'));
 app.use(require('./routes/Educado'));
+app.use(require('./routes/Educador'));
 app.use(require('./routes/login'));
 
 //Statick Files
@@ -63,5 +64,7 @@ app.set('address','localhost');
 app.listen(app.get('port'), () => {
     console.log('Servidor escuchando en el puerto: ', app.get('port'));
 });
+
+
 
 //console.log("erro");

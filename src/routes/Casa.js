@@ -4,7 +4,7 @@ const rutas = express.Router();
 const Educado = require('../Educados');
 
 rutas.get('/casa/add',(req,res)=>{
-    res.render('casa/add');
+    res.render('Casa/add');
 });
 
 rutas.post('/casa/add',async(req,res)=>{
