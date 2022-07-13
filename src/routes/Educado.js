@@ -108,6 +108,9 @@ rutas.post('/educado/ei',async(req, res) => {
 });
 
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> refs/remotes/origin/main
 module.exports = rutas;
