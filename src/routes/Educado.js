@@ -84,7 +84,8 @@ rutas.get('/educado/menu/:id',async(req, res) => {
 rutas.get('/educado/pei/:id',async(req, res) => {
     let id=req.params;
     console.log(id);
-    res.render('educados/PEI/Add-PEI',id);
+    const area= await pool.query('select * from Area where valido=1'); 
+    res.render('educados/PEI/Add-PEI',{id,area});
 });
 
 rutas.get('/educado/ei/:id',async(req, res) => {
@@ -93,7 +94,7 @@ rutas.get('/educado/ei/:id',async(req, res) => {
     res.render('educados/EI',id);
 });
 
-rutas.post('/educado/PEI',async(req, res) => {
+rutas.post('/educado/pei',async(req, res) => {
     let id=req.params;
     console.log(id);
     let consulta=await pool.query('select * from Educado where valido=1');
@@ -105,6 +106,13 @@ rutas.post('/educado/ei',async(req, res) => {
     console.log(id);
     let consulta=await pool.query('select * from Educado where valido=1');
     res.render('educados/list',{consulta});
+});
+
+
+rutas.post('/educado/EvaluacionPEI/:id',async(req, res) => {
+    let id=req.params;
+    let consulta=await pool.query('select * from Educado where valido=1');
+    res.render('educados/EvaluacionPEI',{consulta});
 });
 
 module.exports = rutas;

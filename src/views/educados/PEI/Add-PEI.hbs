@@ -12,11 +12,9 @@
        <div class="form-group">
             <label>Area: </label>
             <select class="form-control" name="Area">
-               <option value="">Uno</option>
-               <option value="">Dos</option>
-               <option value="">tres</option>
-               <option value="">Cuatro</option>
-
+               {{#each area}}
+               <option value={{Id}}>{{Nombre}}</option>
+               {{/each}}
             </select> </br>
        </div>   
         <div class="form-group">
@@ -32,7 +30,7 @@
             <input name="Plazo" type="date" class="form-control"> </br>
        </div>
         <div class="form-group">
-            <label>Resultado: </label>
+            <label>Resultados esperados: </label>
             <textarea name="Resultado" type="text" class="form-control"> </textarea></br>
        </div>
      <br>

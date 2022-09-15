@@ -1,14 +1,19 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
     <a class="navbar-brand" href="/">I&C</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
+    <div class="collapse navbar-collapse" id="navbarNavDropdown"></div>
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="/educado/list">Chicos</a>
-        </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Adolecentes
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <a class="dropdown-item" href="/educado/list">Ver</a>
+          <a class="dropdown-item" href="/educado/add">Agregar</a>
+        </div>
+      </li>
         <li class="nav-item">
           <a class="nav-link" href="/casa/list" >Casa</a>
         </li>
@@ -20,5 +25,7 @@
         </li>
       </ul>
     </div>
-  </div>
 </nav>
+
+
+   
