@@ -50,15 +50,14 @@ rutas.post('/educado/edit/:id',async(req, res) => {
     let id=req.params.id;    
     let cuerpo=req.body;
     const aux={
-       // id:id,
-        nombre:cuerpo.Nombre,
+        Id:id,
+        Nombre:cuerpo.Nombre,
         CI: cuerpo.Ci,
         sipi: cuerpo.Sipi,
         fnac: cuerpo.Fnac,
-        prorroga: cuerpo.Prorroga,
-        pei: cuerpo.PEI,
-        rutafoto: cuerpo.Rutafoto,
-        valido:1,
+        Casa: cuerpo.Casa,
+        Rutafoto: cuerpo.Rutafoto,
+        Valido:1,
     };
 
     await pool.query('update Educado set ? where id= ?',[aux, id]);
@@ -77,26 +76,38 @@ rutas.get('/educado/delete/:id', async(req, res) =>{
 
 rutas.get('/educado/menu/:id',async(req, res) => {
     let id=req.params;
-    console.log(id);
-    res.render('educados/menu',id);
+    //console.log(id);
+    let aux = await pool.query('select * from Educado where id=?',id.id);
+    const result = Object.values(JSON.parse(JSON.stringify(aux)));
+    console.log(result);
+    let adolesente ={
+        Id:result[0].Id,
+        Nombre : result[0].Nombre
+    };
+    res.render('educados/menu',{adolesente});
+    console.log(adolesente);
 });
 
 rutas.get('/educado/pei/:id',async(req, res) => {
     let id=req.params;
     console.log(id);
+    const educador = await pool.query('Select Id,Nombre from Educador where valido = 1')
     const area= await pool.query('select * from Area where valido=1'); 
-    res.render('educados/PEI/Add-PEI',{id,area});
+    res.render('educados/PEI/Add-PEI',{id,area,educador});
 });
 
 rutas.get('/educado/ei/:id',async(req, res) => {
     let id=req.params;
-    console.log(id);
+    //console.log(id);
     res.render('educados/EI',id);
 });
 
 rutas.post('/educado/pei',async(req, res) => {
     let id=req.params;
-    console.log(id);
+    
+    let aux = req.body;
+    console.log(aux);    
+    //await pool.query('insert (Fecha,Area,Objetivoymeta,Accionacuerdo,Plazo, Resultados) into ProEduIndi as PEI, ProEduIniLinea as PEIL where PEIL.Id_pro=PEI.Id;')
     let consulta=await pool.query('select * from Educado where valido=1');
     res.render('educados/list',{consulta});
 });
@@ -109,10 +120,23 @@ rutas.post('/educado/ei',async(req, res) => {
 });
 
 
-rutas.post('/educado/EvaluacionPEI/:id',async(req, res) => {
-    let id=req.params;
+rutas.get('/educado/EvaluacionPEI/:id',async(req, res) => {
+    let id=req.params;  
     let consulta=await pool.query('select * from Educado where valido=1');
-    res.render('educados/EvaluacionPEI',{consulta});
+    //console.log(consulta);
+    res.render('educados/PEI/EvaluacionPEI',{consulta});
+    
 });
+
+rutas.post('/educado/EvaluacionPEI/:id',async(req, res) => {
+    let id=req.params;  
+    let consulta=await pool.query('Select Fecha,Area,Objetivoymeta,Accionacuerdo,Plazo, Resultados from ProEduIndi as PEI, ProEduIniLinea as PEIL where PEIL.Id_pro=PEI.Id;');
+    //console.log(consulta);
+    res.render('educados/PEI/EvaluacionPEI',{consulta});
+    
+});
+
+
+
 
 module.exports = rutas;

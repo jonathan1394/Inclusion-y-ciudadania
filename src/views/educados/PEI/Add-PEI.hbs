@@ -8,6 +8,14 @@
             <label>Fecha: </label>
             <input name="Fecha" autofocus type="date" class="form-control"> </br>
        </div>   
+            <div class="form-group">
+            <label>Educador: </label>
+            <select class="form-control" name="educador">
+               {{#each educador}}
+               <option value={{Id}}>{{Nombre}}</option>
+               {{/each}}
+            </select> </br>
+       </div>  
 
        <div class="form-group">
             <label>Area: </label>
@@ -17,6 +25,7 @@
                {{/each}}
             </select> </br>
        </div>   
+
         <div class="form-group">
             <label>Objetivo:</label>
             <textarea name="Objetivo" type="text" class="form-control"> </textarea></br>
